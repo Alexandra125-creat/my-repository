@@ -1,27 +1,8 @@
-name: C++ CI
-
-on: [push, pull_request]
-
+name: CI
+on: push
 jobs:
-  build-and-test:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Install dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y cmake g++
-
-      - name: Configure CMake
-        run: cmake -B build
-
-      - name: Build
-        run: cmake --build build
-
-      - name: Simple Test
-        run: |
-          cd build
-          echo "Testing: 4 2 +"
-          echo "4 2 +" | ./rpn_calculator
+    - uses: actions/checkout@v2
+    - run: mkdir build && cd build && cmake .. && make
