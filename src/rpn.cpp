@@ -5,6 +5,7 @@
 #include <string>
 #include <cctype>
 #include <cmath>
+
 std::vector<std::string> tokenize(const std::string& expression) {
     std::vector<std::string> tokens;
     std::istringstream iss(expression);
@@ -16,6 +17,7 @@ std::vector<std::string> tokenize(const std::string& expression) {
     
     return tokens;
 }
+
 bool is_number(const std::string& s) {
     if (s.empty()) return false;
     
@@ -46,8 +48,22 @@ double evaluate_rpn(const std::string& expression) {
         if (is_number(token)) {
             // Преобразуем строку в число и помещаем в стек
             stack.push(std::stod(token));
+        } else if (token == "sqrt") {
+            // Обработка квадратного корня (унарная операция)
+            if (stack.empty()) {
+                throw std::invalid_argument("Not enough operands for operator 'sqrt'");
+            }
+            
+            double a = stack.top(); stack.pop();
+            
+            if (a < 0) {
+                throw std::invalid_argument("Square root of negative number");
+            }
+            
+            double result = std::sqrt(a);
+            stack.push(result);
         } else {
-            // Обрабатываем оператор
+            // Обрабатываем бинарные операторы
             if (stack.size() < 2) {
                 throw std::invalid_argument("Not enough operands for operator '" + token + "'");
             }
