@@ -1,0 +1,1 @@
+/usr/bin/c++ -g -g -O0 CMakeFiles/rpn_calculator.dir/src/main.cpp.o CMakeFiles/rpn_calculator.dir/src/rpn.cpp.o -o rpn_calculator 

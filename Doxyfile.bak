@@ -1,0 +1,14 @@
+PROJECT_NAME           = "RPN Calculator"
+INPUT                  = include src
+RECURSIVE              = YES
+EXTRACT_ALL            = YES
+GENERATE_HTML          = YES
+HAVE_DOT               = YES
+EXTRACT_PRIVATE        = YES
+EXTRACT_STATIC         = YES
+GENERATE_TREEVIEW      = YES
+CALL_GRAPH             = YES
+CALLER_GRAPH           = YES
+
+cd '/home/alexandra/my-project/rpn_calculator'
+
